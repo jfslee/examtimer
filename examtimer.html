@@ -35,12 +35,12 @@
         margin-top: 40px;
         margin-left: 40px;
         margin-right: 40px;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
       input, textarea {
         font-family: monospace;
@@ -93,20 +93,20 @@
 
       #control {
         font-size: 30px;
-		color: ebebeb
+        color: ebebeb
       }
       #pause:hover {
         color: 424242;
         cursor: pointer;
       }
-	  #less, #more {
-	    color: ebebeb;
-		font-weight:bold;
-	  }
-	  #less:hover, #more:hover {
-	    color: e64626;
-		cursor: pointer;
-	  }
+      #less, #more {
+        color: ebebeb;
+        font-weight:bold;
+      }
+      #less:hover, #more:hover {
+        color: e64626;
+        cursor: pointer;
+      }
       #addinfo {
         padding-top: 40px;
         width:100%;
@@ -115,33 +115,33 @@
         color:e64626;
         text-align:left;
       }
-	  #pretime {
+      #pretime {
         font-size: 48px;
         font-weight: normal;
-		color: cacaca;
+        color: cacaca;
       }
-	  #control, #pretime {
-		position: fixed;
-		left: 0;
-		right: 0;
+      #control, #pretime {
+        position: fixed;
+        left: 0;
+        right: 0;
     bottom: 50px;
     text-align:center;
-		display: inline-block;
-	  }
+        display: inline-block;
+      }
     #tophead {
     padding-top: 20px;
     }
 
     </style>
-	<script>
-		function responsivesize() {
+    <script>
+        function responsivesize() {
       w = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
       h = (document.documentElement.scrollHeight || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
-			prefw = 1800;
-			prefh = 874+document.getElementById('tophead').offsetHeight;
-			document.body.style.zoom = Math.min(w/prefw,h/prefh);
-		}
-	</script>
+            prefw = 1800;
+            prefh = 874+document.getElementById('tophead').offsetHeight;
+            document.body.style.zoom = Math.min(w/prefw,h/prefh);
+        }
+    </script>
   </head>
   <body onload="responsivesize()" onresize="responsivesize()" ondblclick="gofullscreen()">
     <div id="title">
@@ -197,7 +197,7 @@
       <div id="optionalinfo"></div>
       <input type="button" value="Commence exam" onclick="startreading()" autofocus="autofocus">
       <input type="button" value="Back" onclick="back()">
-	  <div id="pretime">Something is wrong - check if Javascript is active on your machine</div>
+      <div id="pretime">Something is wrong - check if Javascript is active on your machine</div>
     </div>
     <div id="exam" style="display:none">
       <div id="timer"></div>
@@ -205,9 +205,9 @@
       <div id="message"></div>
       <div id="addinfodiv"><form name="addinfoform"><textarea id="addinfo" rows="5" oninput="updateURL()"></form></textarea></div>
       <div id="control">
-		<span id="less" title="Subtract 1 minute from current timer" onclick="less()">&minus;</span>
+        <span id="less" title="Subtract 1 minute from current timer" onclick="less()">&minus;</span>
         <span id="pause" title="Pause / unpause timer" onclick="pauseplay()">&#10074;&#10074;</span>
-		<span id="more" title="Add 1 minute to current timer" onclick="more()">&plus;</span>
+        <span id="more" title="Add 1 minute to current timer" onclick="more()">&plus;</span>
       </div>
     </div>
     <script>
@@ -365,7 +365,7 @@
 
           phase("getinfo");
           phase("prepare");
-		  prereading();
+          prereading();
       }
       // Go back to exam setup page
       function back() {
@@ -377,22 +377,22 @@
       }
       // Start reading time
       function startreading() {
-	  	  // Set up webAudio oscillator for alarm
-		  audioctx = new (window.AudioContext || window.webkitAudioContext)();
-		  osc = audioctx.createOscillator();
-		  oscon = false;
-		  beepcount = 0;
-		  beeplength = 40;
-		  beepdelay = 110;
-		  osc.type = 'sine';
-		  osc.frequency.value = 880;
-		  osc.start();
-		  // Prepare for reading time
+            // Set up webAudio oscillator for alarm
+          audioctx = new (window.AudioContext || window.webkitAudioContext)();
+          osc = audioctx.createOscillator();
+          oscon = false;
+          beepcount = 0;
+          beeplength = 40;
+          beepdelay = 110;
+          osc.type = 'sine';
+          osc.frequency.value = 880;
+          osc.start();
+          // Prepare for reading time
           tstatus = "Reading";
           phase("prepare");
           phase("exam");
       window.onbeforeunload = function() {return "";};
-		  clearTimeout(pretick);
+          clearTimeout(pretick);
           if (readmins == 0) {
               startwriting();
           } else {
@@ -418,7 +418,7 @@
           }
           if (paused == false) {document.getElementById('curtime').innerHTML = "The current time is "+ eth + ":" + (10 > etm ? "0" : "") + etm + ":" + (10 > ets ? "0" : "") + ets + ampm;}
       }
-	  // Update display of the current time during the pre-reading screen
+      // Update display of the current time during the pre-reading screen
       function prereading() {
           var ctime = new Date();
           var eth = ctime.getHours();
@@ -433,7 +433,7 @@
               eth = 12;
           }
           document.getElementById('pretime').innerHTML = "The current time is " + eth + ":" + (10 > etm ? "0" : "") + etm + ":" + (10 > ets ? "0" : "") + ets + ampm;
-		  pretick = setTimeout(prereading, 50)
+          pretick = setTimeout(prereading, 50)
       }
       // Compute and display the time at which reading or writing time ends
       function xtimeends(text) {
@@ -456,10 +456,10 @@
       function readingtime() {
           var now = new Date().getTime();
           var diff = target - now;
-		  if (paused == true) {diff = diff + (now - pausedat);}
+          if (paused == true) {diff = diff + (now - pausedat);}
       // Timer shows red in last 1 minute of reading time
           if (diff < 60000) {document.getElementById('timer').style.color = "e64626";}
-		  else {document.getElementById('timer').style.color = "424242"}
+          else {document.getElementById('timer').style.color = "424242"}
       // When reading time is finished exit loop and start writing time
           if (diff < 0) {
               startwriting();
@@ -485,10 +485,10 @@
       function writingtime() {
           var now = new Date().getTime();
           var diff = target - now;
-		  if (paused == true) {diff = diff + (now - pausedat);}
+          if (paused == true) {diff = diff + (now - pausedat);}
       // Timer shows red in last 10 minutes of writing time
           if (diff < 600000) {document.getElementById('timer').style.color = "e64626";}
-		  else {document.getElementById('timer').style.color = "424242"}
+          else {document.getElementById('timer').style.color = "424242"}
       // When writing time is finished exit loop and display exam finished message
           if (diff < 0) {
               document.getElementById('message').innerHTML = "Writing time has finished. Pens and pencils down.";
@@ -508,7 +508,7 @@
       }
       // Helper function to flash the timer when the exam has finished
       function flashtimer() {
-		  document.getElementById('timer').innerHTML = "0:00:00";
+          document.getElementById('timer').innerHTML = "0:00:00";
       document.getElementById('curtime').innerHTML = "";
           if (document.getElementById('timer').style.color == "white") {
               document.getElementById('timer').style.color = "e64626";
@@ -555,37 +555,37 @@
               alarm(3);
           }
       }
-	  // Add 1 minute
-	  function more() {
-	  target = target + 60000;
-	  if (paused == false) {
-		  if (tstatus == "Reading") {xtimeends("Reading");}
-		  if (tstatus == "Writing") {xtimeends("Writing");}
-	    }
-	  else {
-		if (tstatus == "Reading") {readingtime();}
-		if (tstatus == "Writing") {writingtime();}
-		}
-	  alarm(1);
-	  }
-	  // Subtract 1 minute - this is a little bit complicated because of the way pausing works. Needs refactoring.
-	  function less() {
-	  if (paused == false) {
-		  target = target - 60000;
-		  if (tstatus == "Reading") {xtimeends("Reading");}
-		  if (tstatus == "Writing") {xtimeends("Writing");}
-	    }
-	  else {
-		var now = new Date().getTime();
-		var sincepaused = now - pausedat;
-		var diff = target - now;
-		if (diff < (60000 - sincepaused)) {target = target - diff - sincepaused;}
-		else {target = target - 60000;}
-		if (tstatus == "Reading") {readingtime();}
-		if (tstatus == "Writing") {writingtime();}
-		}
-	  alarm(1);
-	  }
+      // Add 1 minute
+      function more() {
+      target = target + 60000;
+      if (paused == false) {
+          if (tstatus == "Reading") {xtimeends("Reading");}
+          if (tstatus == "Writing") {xtimeends("Writing");}
+        }
+      else {
+        if (tstatus == "Reading") {readingtime();}
+        if (tstatus == "Writing") {writingtime();}
+        }
+      alarm(1);
+      }
+      // Subtract 1 minute - this is a little bit complicated because of the way pausing works. Needs refactoring.
+      function less() {
+      if (paused == false) {
+          target = target - 60000;
+          if (tstatus == "Reading") {xtimeends("Reading");}
+          if (tstatus == "Writing") {xtimeends("Writing");}
+        }
+      else {
+        var now = new Date().getTime();
+        var sincepaused = now - pausedat;
+        var diff = target - now;
+        if (diff < (60000 - sincepaused)) {target = target - diff - sincepaused;}
+        else {target = target - 60000;}
+        if (tstatus == "Reading") {readingtime();}
+        if (tstatus == "Writing") {writingtime();}
+        }
+      alarm(1);
+      }
     </script>
   </body>
 </html>
