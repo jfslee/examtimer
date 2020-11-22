@@ -2,7 +2,7 @@
 A timer for running examinations for schools or universities, in a single self-contained HTML file!\
 Originally developed for the University of Sydney (https://sydney.edu.au/staff-exam-timer)
 
-### [Try it out](https://jfslee.github.io/examtimer/examtimer.html) or [get the code](https://github.com/jfslee/examtimer)
+### [Try it out](https://jfslee.github.io/examtimer/examtimer.html) or [get the code](https://github.com/jfslee/examtimer/blob/main/examtimer.html)
 
 ## Features
 
